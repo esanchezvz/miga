@@ -1,0 +1,31 @@
+{
+	"name": "@miga/monorepo",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "turbo build",
+		"check:fix": "biome check --error-on-warnings --write . --log-level error --log-kind compact",
+		"check": "biome check --error-on-warnings --log-level error --log-kind compact",
+		"clean": "turbo clean && rm -rf node_modules",
+		"dev": "turbo dev",
+		"prepare": "husky",
+		"typecheck": "turbo typecheck"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.4.13",
+		"@commitlint/cli": "20.5.3",
+		"@commitlint/config-conventional": "20.5.3",
+		"@commitlint/types": "20.4.4",
+		"@types/js-yaml": "4.0.9",
+		"@types/node": "catalog:",
+		"husky": "9.1.7",
+		"js-yaml": "4.1.1",
+		"tsx": "catalog:",
+		"turbo": "2.9.7",
+		"typescript": "catalog:"
+	},
+	"packageManager": "pnpm@11.0.3",
+	"engines": {
+		"node": ">=24"
+	}
+}

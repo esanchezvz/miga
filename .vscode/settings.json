@@ -1,0 +1,16 @@
+{
+	"editor.codeActionsOnSave": { "source.fixAll.biome": "explicit" },
+	"editor.defaultFormatter": "biomejs.biome",
+	"editor.formatOnSave": true,
+	"files.associations": {
+		".env*": "dotenv",
+		"*.css": "tailwindcss"
+	},
+	"tailwindCSS.classFunctions": ["cva", "cn", "cx"],
+	"tailwindCSS.experimental.classRegex": [["\\w+ClassName\\s*=\\s*[\"'`]([^\"'`]*)[\"'`]", "([^\"'`]*)"]],
+	"js/ts.tsdk.promptToUseWorkspaceVersion": true,
+	"js/ts.tsdk.path": "node_modules/typescript/lib",
+	"[yaml]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	}
+}
