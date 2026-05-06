@@ -1,9 +1,0 @@
-{
-	// TODO: Remove this tsconfig after creating first package using typescript with proper setup for typescript. this is for now to remove the errors for the commitlint.config.ts file
-	"compilerOptions": {
-		"target": "ES2022",
-		"module": "NodeNext",
-		"moduleResolution": "NodeNext",
-		"types": ["node"]
-	}
-}

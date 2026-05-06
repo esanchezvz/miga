@@ -7,6 +7,9 @@
 		"check:fix": "biome check --error-on-warnings --write . --log-level error --log-kind compact",
 		"check": "biome check --error-on-warnings --log-level error --log-kind compact",
 		"clean": "turbo clean && rm -rf node_modules",
+		"db:generate": "pnpm -F db db:generate",
+		"db:migrate": "pnpm -F db db:migrate",
+		"db:push": "pnpm -F db db:push",
 		"dev": "turbo dev",
 		"prepare": "husky",
 		"typecheck": "turbo typecheck"
