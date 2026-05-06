@@ -39,6 +39,7 @@
 		"domains": { "react": "recommended" },
 		"enabled": true,
 		"rules": {
+			"recommended": true,
 			"suspicious": {
 				"noConsole": {
 					"level": "error",
@@ -47,7 +48,6 @@
 					}
 				}
 			},
-			"recommended": true,
 			"nursery": {
 				"useSortedClasses": {
 					"fix": "safe",
