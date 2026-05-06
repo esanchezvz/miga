@@ -1,5 +1,6 @@
 {
 	"name": "@miga/db",
+	"type": "module",
 	"description": "Miga's database schema and query logic.",
 	"version": "0.0.0",
 	"private": true,

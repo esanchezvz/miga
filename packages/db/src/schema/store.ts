@@ -1,6 +1,6 @@
 import { pgTable, text } from 'drizzle-orm/pg-core';
 
-import { defaultColumns } from '../utils/defaults';
+import { defaultColumns } from '~/utils/defaults';
 
 const store = pgTable('stores', {
 	...defaultColumns,

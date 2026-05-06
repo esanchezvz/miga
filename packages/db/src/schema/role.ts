@@ -1,8 +1,8 @@
 import { pgTable, text } from 'drizzle-orm/pg-core';
 
-import { defaultColumns } from '../utils/defaults';
+import { defaultColumns } from '~/utils/defaults';
 
-const ROLES = ['admin', 'super_admin', 'cashier', 'epmloyee'] as const;
+export const ROLES = ['admin', 'super_admin', 'cashier', 'epmloyee'] as const;
 
 export type Role = (typeof ROLES)[number];
 

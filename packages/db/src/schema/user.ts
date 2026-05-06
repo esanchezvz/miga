@@ -1,6 +1,6 @@
 import { index, pgTable, text } from 'drizzle-orm/pg-core';
 
-import { defaultColumns } from '../utils/defaults';
+import { defaultColumns } from '~/utils/defaults';
 
 const createIndex = (name: string) => index(`user-${name}`);
 
