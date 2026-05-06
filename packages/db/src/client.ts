@@ -1,9 +1,10 @@
+import env, { isProduction } from '@miga/env';
 import { drizzle } from 'drizzle-orm/node-postgres';
 
 const db = drizzle({
-	connection: 'postgresql://postgres:postgres@localhost:5432/postgres', // TODO: set-up environment variable
+	connection: env.secret.DATABASE_URL,
 	casing: 'snake_case',
-	logger: process.env.NODE_ENV !== 'production', // TODO: use isDevelopment env variable, after creating env package
+	logger: !isProduction,
 });
 
 export type Database = typeof db;

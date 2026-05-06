@@ -1,3 +1,4 @@
+import env from '@miga/env';
 import { defineConfig } from 'drizzle-kit';
 
 const config = defineConfig({
@@ -10,7 +11,7 @@ const config = defineConfig({
 		schema: 'drizzle',
 	},
 	dbCredentials: {
-		url: 'postgresql://postgres:postgres@localhost:5432/postgres', // TODO: set-up environment variable
+		url: env.secret.DATABASE_URL,
 	},
 });
 

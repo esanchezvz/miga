@@ -1,0 +1,8 @@
+{
+	"extends": "@miga/tsconfig/base.json",
+	"compilerOptions": {
+		"paths": {
+			"~/*": ["./src/*"]
+		}
+	}
+}
