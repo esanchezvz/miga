@@ -1,7 +1,6 @@
 {
 	"name": "@miga/monorepo",
 	"private": true,
-	"type": "module",
 	"scripts": {
 		"build": "turbo build",
 		"check:fix": "biome check --error-on-warnings --write . --log-level error --log-kind compact",
@@ -20,7 +19,6 @@
 		"@commitlint/config-conventional": "20.5.3",
 		"@commitlint/types": "20.4.4",
 		"@types/js-yaml": "4.0.9",
-		"@types/node": "catalog:",
 		"husky": "9.1.7",
 		"js-yaml": "4.1.1",
 		"tsx": "catalog:",
