@@ -1,5 +1,6 @@
-import env, { isProduction } from '@miga/env';
 import { drizzle } from 'drizzle-orm/node-postgres';
+
+import env, { isProduction } from '@miga/env';
 
 const db = drizzle({
 	connection: env.secret.DATABASE_URL,

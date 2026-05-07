@@ -1,5 +1,6 @@
-import env from '@miga/env';
 import { defineConfig } from 'drizzle-kit';
+
+import env from '@miga/env';
 
 const config = defineConfig({
 	dialect: 'postgresql',
