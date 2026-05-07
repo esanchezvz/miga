@@ -14,4 +14,4 @@ const role = pgTable('roles', {
 type InsertRole = typeof role.$inferInsert;
 type SelectRole = typeof role.$inferSelect;
 
-export { type InsertRole, role, type SelectRole };
+export { type InsertRole, type SelectRole, role };

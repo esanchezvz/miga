@@ -1,6 +1,6 @@
 /// <reference types="node" />
 
-import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
 
 import { RuleConfigSeverity, type SyncRule, type UserConfig } from '@commitlint/types';

@@ -14,4 +14,4 @@ const employee = pgTable('employees', {
 type InsertEmployee = typeof employee.$inferInsert;
 type SelectEmployee = typeof employee.$inferSelect;
 
-export { employee, type InsertEmployee, type SelectEmployee };
+export { type InsertEmployee, type SelectEmployee, employee };
