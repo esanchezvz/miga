@@ -1,7 +1,6 @@
-import { type PublicSchema, publicSchema } from './schemas/public';
-import type { SecretSchema } from './schemas/secret';
-import { type ServerSchema, serverSchema } from './schemas/server';
-import { type EnvValidator, validate } from './utils/validate';
+import { type PublicSchema, validatePublicEnv } from './schemas/public';
+import { type SecretSchema, validateSecretEnv } from './schemas/secret';
+import { validateServerEnv } from './schemas/server';
 
 declare const window: unknown;
 
@@ -17,18 +16,6 @@ const secretRuntimeEnv: RuntimeEnv<SecretSchema> = {
 	DATABASE_URL: process.env.DATABASE_URL,
 };
 
-const serverRuntimeEnv: RuntimeEnv<ServerSchema> = {
-	...publicRuntimeEnv,
-	...secretRuntimeEnv,
-};
-
-const isBrowser = typeof window !== 'undefined';
-
-const validatePublicEnv: EnvValidator = (env) => validate(publicSchema, env);
-const validateServerEnv: EnvValidator = (env) => validate(serverSchema, env);
-
-isBrowser ? validatePublicEnv(publicRuntimeEnv) : validateServerEnv(serverRuntimeEnv);
-
 const isEnvironment = (env: PublicSchema['APP_ENV']) => env === publicRuntimeEnv.APP_ENV;
 
 const isProduction = isEnvironment('production');
@@ -42,4 +29,4 @@ const env = {
 
 export default env;
 
-export { isDevelopment, isProduction, isStage, validatePublicEnv, validateServerEnv };
+export { isDevelopment, isProduction, isStage, validatePublicEnv, validateSecretEnv, validateServerEnv };
