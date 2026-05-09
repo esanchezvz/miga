@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { type EnvValidator, validate } from '~/utils/validate';
+import { type EnvValidator, validate } from '../utils/validate';
 
 const publicSchema = z.object({
 	APP_ENV: z.enum(['development', 'stage', 'production']).default('development'),

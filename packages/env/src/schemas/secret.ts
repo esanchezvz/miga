@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { type EnvValidator, validate } from '~/utils/validate';
+import { type EnvValidator, validate } from '../utils/validate';
 
 const secretSchema = z.object({
 	DATABASE_URL: z.string().min(1),

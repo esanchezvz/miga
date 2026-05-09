@@ -1,7 +1,6 @@
 import type { z } from 'zod';
 
-import { type EnvValidator, validate } from '~/utils/validate';
-
+import { type EnvValidator, validate } from '../utils/validate';
 import { publicSchema } from './public';
 import { secretSchema } from './secret';
 

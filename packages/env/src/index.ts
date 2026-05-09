@@ -23,7 +23,7 @@ const isDevelopment = isEnvironment('development');
 const isStage = isEnvironment('stage');
 
 let _publicValidated = false;
-const publicProxy = new Proxy(publicRuntimeEnv, {
+const publicProxy = new Proxy(publicRuntimeEnv as PublicSchema, {
 	get(target, prop: keyof PublicSchema) {
 		if (!_publicValidated) {
 			validatePublicEnv(publicRuntimeEnv);
@@ -34,7 +34,7 @@ const publicProxy = new Proxy(publicRuntimeEnv, {
 });
 
 let _secretValidated = false;
-const secretProxy = new Proxy(secretRuntimeEnv, {
+const secretProxy = new Proxy(secretRuntimeEnv as SecretSchema, {
 	get(target, prop: keyof SecretSchema) {
 		if (typeof window !== 'undefined') {
 			throw new Error(
