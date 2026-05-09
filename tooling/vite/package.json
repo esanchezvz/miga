@@ -6,7 +6,12 @@
 	"files": [
 		"react.ts"
 	],
+	"scripts": {
+		"clean": "rm -rf .turbo node_modules",
+		"typecheck": "tsc --noEmit"
+	},
 	"devDependencies": {
+		"@miga/tsconfig": "workspace:*",
 		"@vitejs/plugin-react": "6.0.1"
 	},
 	"peerDependencies": {
