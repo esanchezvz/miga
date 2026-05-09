@@ -4,9 +4,9 @@
 	"version": "0.0.0",
 	"scripts": {
 		"clean": "rm -rf .turbo node_modules",
-		"dev": "NODE_OPTIONS='--import tsx/esm' vite",
-		"build": "NODE_OPTIONS='--import tsx/esm' tsc -b && vite build",
-		"preview": "NODE_OPTIONS='--import tsx/esm' vite preview",
+		"dev": "vite --configLoader runner",
+		"build": "tsc --noEmit && vite build --configLoader runner",
+		"preview": "vite preview --configLoader runner",
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
