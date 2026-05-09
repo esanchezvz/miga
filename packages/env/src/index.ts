@@ -22,9 +22,36 @@ const isProduction = isEnvironment('production');
 const isDevelopment = isEnvironment('development');
 const isStage = isEnvironment('stage');
 
+let _publicValidated = false;
+const publicProxy = new Proxy(publicRuntimeEnv, {
+	get(target, prop: keyof PublicSchema) {
+		if (!_publicValidated) {
+			validatePublicEnv(publicRuntimeEnv);
+			_publicValidated = true;
+		}
+		return target[prop];
+	},
+});
+
+let _secretValidated = false;
+const secretProxy = new Proxy(secretRuntimeEnv, {
+	get(target, prop: keyof SecretSchema) {
+		if (typeof window !== 'undefined') {
+			throw new Error(
+				`❌ Attempted to access server-side environment variable '${String(prop)}' on the client.`,
+			);
+		}
+		if (!_secretValidated) {
+			validateSecretEnv(secretRuntimeEnv);
+			_secretValidated = true;
+		}
+		return target[prop];
+	},
+});
+
 const env = {
-	public: publicRuntimeEnv as PublicSchema,
-	secret: secretRuntimeEnv as SecretSchema,
+	public: publicProxy,
+	secret: secretProxy,
 };
 
 export default env;
