@@ -1,17 +1,24 @@
 import path from 'node:path';
 
 import react from '@vitejs/plugin-react';
-import { type UserConfig, defineConfig, loadEnv } from 'vite';
+import { type UserConfig, defineConfig } from 'vite';
 
-const ENV_VAR_PREFIX = 'PUBLIC_';
+import { type EnvValidator, envGuard } from './plugins/env-guard';
+import { ENV_PREFIXES, getPublicEnv } from './utils';
 
-const createConfig = (dirname: string, overrides: UserConfig = {}) => {
-	const repoRoot = path.resolve(dirname, '../../'); // apps/<app-name> → root
-	const env = loadEnv('', repoRoot, ENV_VAR_PREFIX);
+const createConfig = (
+	dirname: string,
+	options: {
+		overrides?: UserConfig;
+		validateEnv: EnvValidator; // This is here to prevent importing runtime logic for tooling/infra package
+	},
+) => {
+	const { overrides = {}, validateEnv } = options;
+	const env = getPublicEnv();
 
 	return defineConfig({
-		plugins: [react()],
-		envPrefix: ENV_VAR_PREFIX,
+		plugins: [envGuard(validateEnv), react()],
+		envPrefix: ENV_PREFIXES,
 		define: {
 			'process.env': env,
 		},

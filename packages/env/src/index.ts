@@ -1,6 +1,7 @@
 import { type PublicSchema, publicSchema } from './schemas/public';
 import type { SecretSchema } from './schemas/secret';
 import { type ServerSchema, serverSchema } from './schemas/server';
+import { type EnvValidator, validate } from './utils/validate';
 
 declare const window: unknown;
 
@@ -21,22 +22,18 @@ const serverRuntimeEnv: RuntimeEnv<ServerSchema> = {
 	...secretRuntimeEnv,
 };
 
-const parsed =
-	typeof window !== 'undefined'
-		? publicSchema.safeParse(publicRuntimeEnv)
-		: serverSchema.safeParse(serverRuntimeEnv);
+const isBrowser = typeof window !== 'undefined';
 
-if (parsed.error) {
-	const prettyErrors = parsed.error.issues
-		.map(({ path, message }) => `- ${path.toString()}: ${message}`)
-		.join('\n');
+const validatePublicEnv: EnvValidator = (env) => validate(publicSchema, env);
+const validateServerEnv: EnvValidator = (env) => validate(serverSchema, env);
 
-	throw Error(`Environment validation failed for:\n${prettyErrors}\n`);
-}
+isBrowser ? validatePublicEnv(publicRuntimeEnv) : validateServerEnv(serverRuntimeEnv);
 
-const isProduction = parsed.data.APP_ENV === 'production';
-const isDevelopment = parsed.data.APP_ENV === 'development';
-const isStage = parsed.data.APP_ENV === 'stage';
+const isEnvironment = (env: PublicSchema['APP_ENV']) => env === publicRuntimeEnv.APP_ENV;
+
+const isProduction = isEnvironment('production');
+const isDevelopment = isEnvironment('development');
+const isStage = isEnvironment('stage');
 
 const env = {
 	public: publicRuntimeEnv as PublicSchema,
@@ -45,4 +42,4 @@ const env = {
 
 export default env;
 
-export { isDevelopment, isProduction, isStage };
+export { isDevelopment, isProduction, isStage, validatePublicEnv, validateServerEnv };
