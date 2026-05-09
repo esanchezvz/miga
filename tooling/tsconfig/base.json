@@ -7,6 +7,7 @@
 		"declaration": false,
 		"declarationMap": false,
 		"esModuleInterop": true,
+		"erasableSyntaxOnly": true,
 		"forceConsistentCasingInFileNames": true,
 		"inlineSources": false,
 		"isolatedModules": true,
@@ -23,8 +24,9 @@
 		"skipLibCheck": true,
 		"strict": true,
 		"strictNullChecks": true,
-		"target": "esnext",
-		"useUnknownInCatchVariables": true
+		"target": "es2023",
+		"useUnknownInCatchVariables": true,
+		"verbatimModuleSyntax": true
 	},
 	"exclude": ["node_modules", "dist"]
 }
